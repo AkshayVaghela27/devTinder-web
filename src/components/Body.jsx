@@ -20,7 +20,7 @@ const Body = () => {
     if (userData) return
 
     try {
-      const res = await axios.get(BASE_URL + "profile/view", {
+      const res = await axios.get(BASE_URL + "/profile/view", {
         withCredentials: true
       })
       dispatch(addUser(res.data))
@@ -37,11 +37,13 @@ const Body = () => {
   }, [])
 
   return (
-    <>
+    <div className="min-h-screen flex flex-col bg-base-100">
       <Navbar />
-      <Outlet />
+      <main className="flex-1">
+        <Outlet />
+      </main>
       <Footer />
-    </>
+    </div>
   )
 }
 
