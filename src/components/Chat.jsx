@@ -40,7 +40,7 @@ const Chat = () => {
     const socket = createSocketConnection();
     // As soon as the page loaded, the socket connection is made and joinChat event is emitted
     socket.emit("joinChat", {
-      firstName: user.firstName,
+      firstName: user?.firstName,
       userId,
       targetUserId,
     });
@@ -58,8 +58,8 @@ const Chat = () => {
   const sendMessage = () => {
     const socket = createSocketConnection();
     socket.emit("sendMessage", {
-      firstName: user.firstName,
-      lastName: user.lastName,
+      firstName: user?.firstName,
+      lastName: user?.lastName,
       userId,
       targetUserId,
       text: newMessage,
@@ -77,14 +77,14 @@ const Chat = () => {
               key={index}
               className={
                 "chat " +
-                (user.firstName === msg.firstName ? "chat-end" : "chat-start")
+                (user?.firstName === msg?.firstName ? "chat-end" : "chat-start")
               }
             >
               <div className="chat-header">
-                {`${msg.firstName}  ${msg.lastName}`}
+                {`${msg?.firstName}  ${msg?.lastName}`}
                 <time className="text-xs opacity-50"> 2 hours ago</time>
               </div>
-              <div className="chat-bubble">{msg.text}</div>
+              <div className="chat-bubble">{msg?.text}</div>
               <div className="chat-footer opacity-50">Seen</div>
             </div>
           );
